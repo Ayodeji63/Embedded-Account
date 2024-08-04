@@ -19,6 +19,16 @@ export const LogInCard = () => {
     authenticate({ type: "email", email });
   };
 
+  const signup = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    authenticate({
+      type: "passkey",
+      createNew: true,
+      username: "PASSKEY_NAME",
+    })
+  }
+  
+
   const { status } = useSignerStatus();
   const isAwaitingEmail = status === "AWAITING_EMAIL_AUTH";
   // [!endregion authenticating]
@@ -28,7 +38,7 @@ export const LogInCard = () => {
       {isAwaitingEmail ? (
         <div className="text-[18px] font-semibold">Check your email!</div>
       ) : (
-        <form className="flex flex-col gap-8" onSubmit={login}>
+        <form className="flex flex-col gap-8" onSubmit={signup}>
           <div className="text-[18px] font-semibold">
             Log in to the Embedded Accounts Demo!
           </div>
