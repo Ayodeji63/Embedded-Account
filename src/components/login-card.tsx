@@ -25,9 +25,8 @@ export const LogInCard = () => {
       type: "passkey",
       createNew: true,
       username: "PASSKEY_NAME",
-    })
-  }
-  
+    });
+  };
 
   const { status } = useSignerStatus();
   const isAwaitingEmail = status === "AWAITING_EMAIL_AUTH";
